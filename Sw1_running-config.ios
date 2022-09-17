@@ -1,6 +1,6 @@
 hostname Sw1
 !
-insterface range GigabitEthernet0/1 - 2
+interface range GigabitEthernet0/1 - 2
  switchport mode access
  switchport mode trunk
 !
@@ -12,11 +12,11 @@ interface range FastEthernet0/1 -5
  switchport mode access
  switchport access vlan 10
 !
-interface range FastEthernet0/6 -10
+interface range FastEthernet0/6 - 10
  switchport mode access
  switchport access vlan 20
 !
-interface range FastEthernet0/11 -15
+interface range FastEthernet0/11 - 15
  switchport mode access
  switchport access vlan 30
 !

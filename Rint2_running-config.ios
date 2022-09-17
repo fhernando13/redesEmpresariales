@@ -1,0 +1,38 @@
+hostname RInt1
+!
+interface GigabitEthernet0/0/0
+ ip address 10.0.1.1 255.255.255.0
+ ip nat inside
+ no shutdown
+!
+interface GigabitEthernet0/0/1
+ ip address 10.0.4.1 255.255.255.0
+ ip nat inside
+ no shutdown
+!
+interface GigabitEthernet0/0/2
+ media-type sfp
+ ip address 10.0.5.1 255.255.255.0
+ ip nat inside
+ no shutdown
+!
+interface Serial0/1/0
+ ip address 1.1.1.1 255.255.255.0
+ ip nat outside
+ no shutdown
+!
+ip nat inside source list 1 interface Serial0/1/0 overload
+!
+access-list 1 permit 10.0.0.0 0.255.255.255
+!
+ip route 0.0.0.0 0.0.0.0 1.1.1.254 
+!
+router ospf 1002
+ router-id 172.16.0.1
+ network 10.0.1.0 0.0.0.255 area 0
+ network 10.0.4.0 0.0.0.255 area 0
+ network 10.0.5.0 0.0.0.255 area 0
+ default-information originate
+!
+end
+
