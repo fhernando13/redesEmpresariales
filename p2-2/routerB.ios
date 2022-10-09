@@ -49,3 +49,21 @@ router eigrp 1002
  no auto-summary
 no router ospf 1002
 end
+
+
+!sumarizacion
+enable
+configure terminal
+interface serial 0/2/1
+ ip summary-addres eigrp 1002 192.168.0.0 255.255.252.0 50
+ no shutdown
+interface serial 0/1/1
+ ip summary-addres eigrp 1002 192.168.0.0 255.255.252.0 50
+ no shutdown
+interface serial 0/1/0
+ ip summary-addres eigrp 1002 192.168.4.0 255.255.252.0 50  
+ no shutdown
+interface serial 0/2/0
+ ip summary-addres eigrp 1002 192.168.4.0 255.255.252.0 50
+ no shutdown
+end
