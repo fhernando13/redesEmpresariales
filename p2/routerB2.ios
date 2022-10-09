@@ -1,0 +1,19 @@
+enable
+conf t
+hostname routerB2
+interface serial 0/2/0
+ ip address 192.168.3.10 255.255.255.252
+ no shutdown
+interface serial 0/2/1
+ ip address 192.168.3.13 255.255.255.252
+ no shutdown
+interface g 0/0/1
+ ip address 192.168.2.1 255.255.255.0
+ no shutdown
+router ospf 1002
+ router-id 5.5.5.5
+ network 192.168.3.8 0.0.0.3 area 1
+ network 192.168.3.12 0.0.0.3 area 1
+ network 192.168.2.0 0.0.0.255 area 1
+end
+wr

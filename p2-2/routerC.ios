@@ -1,0 +1,46 @@
+enable
+conf t
+hostname routerC
+interface serial 0/2/1
+ ip address 192.168.6.254 255.255.255.0
+ no shutdown
+interface serial 0/1/1
+ ip address 192.168.5.2 255.255.255.0
+ no shutdown
+interface serial 0/1/0
+ ip address 192.168.11.13 255.255.255.252
+ no shutdown
+interface serial 0/2/0
+ ip address 192.168.11.9 255.255.255.252
+ no shutdown
+router ospf 1002
+ router-id 3.3.3.3
+ network 192.168.6.0 0.0.0.255 area 0
+ network 192.168.5.0 0.0.0.255 area 0
+ network 192.168.11.12 0.0.0.3 area 2
+ network 192.168.11.8 0.0.0.3 area 2
+end
+wr
+
+
+enable 
+conf t
+router ospf 1002
+ router-id 3.3.3.3
+ area 0 range 192.168.4.0 255.255.252.0
+ area 1 range 192.168.0.0 255.255.252.0
+ area 2 range 192.168.8.0 255.255.252.0
+end
+wr
+
+!segunda parte
+
+enable 
+conf t
+router eigrp 1002
+ network 192.168.5.0
+ network 192.168.6.0
+ network 192.168.11.0
+ no auto-summary
+no router ospf 1002
+end

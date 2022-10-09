@@ -11,7 +11,7 @@ vtp mode server
 vtp domain d1002
 vtp password p1002
 !
-spanning-tree vlan 10,20,30 root secondary
+spanning-tree vlan 10,20,30 root primary
 !
 interface range g1/0/1 - 2, g1/0/22 
  switchport  mode access
