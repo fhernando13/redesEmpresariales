@@ -68,6 +68,14 @@ interface serial 0/2/0
  no shutdown
 end
 
+!varianza
+enable
+configure terminal
+router eigrp 1002
+routerB(config-router)#variance 12
+!varianza
+
+
 
 RB-RC
 se 0/2/1
@@ -80,16 +88,8 @@ bandwith 1024
 enable
 configure terminal
 interface serial 0/2/1
- no ip summary-addres eigrp 1002 192.168.3.5 255.255.255.252 50
- no shutdown
-interface serial 0/1/1
- no ip summary-addres eigrp 1002 192.168.0.0 255.255.252.0 50
- no shutdown
-interface serial 0/1/0
- no ip summary-addres eigrp 1002 192.168.4.0 255.255.252.0 50  
- no shutdown
-interface serial 0/2/0
- no ip summary-addres eigrp 1002 192.168.4.0 255.255.252.0 50
+ no 
+ 
  no shutdown
 end
 
